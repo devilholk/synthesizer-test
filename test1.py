@@ -33,8 +33,18 @@ def handler( cmd ):
 			synth.play_note(cmd.chan, cmd.note, cmd.vel )
 
 
+
+
 #midi.capture_midi_in( handler )
 
-capture = midi.Capture(handler)
-capture.start()
+#capture = midi.Capture(handler)
+#capture.start()
 
+import struct
+EV_KEY = 0x1
+f=open("/dev/input/event0")
+while 1:
+	ev_sec, ev_usec, ev_type, ev_code, ev_val = struct.unpack('qqHHi', f.read(24))
+	if ev_type == EV_KEY:
+		if ev_val == 1:
+			handler(midi.Command.Note_ON( 11, ev_code+30, 100))
