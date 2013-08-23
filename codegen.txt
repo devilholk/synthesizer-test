@@ -1,0 +1,39 @@
+%(includes)s
+
+typedef struct {
+	%(struct_members)s
+} %(object)s_data;
+
+
+int %(object)s_process (float* out, int sample_rate, int length, void *dataptr) {
+
+	%(object)s_data* data = (%(object)s_data*) dataptr;
+
+	%(function)s
+}
+
+static PyObject *%(object)s_create (PyObject *self, PyObject *args) {
+
+	%(object)s_data* data = (%(object)s_data*) malloc(sizeof(%(object)s_data));
+
+	*data = (%(object)s_data) {
+		%(struct_create_init)s
+	};
+
+	%(init_function)s
+
+	Processor *processor	= (Processor*) processor_create( %(object)s_process, data);
+
+	return PyInt_FromLong((long) processor);
+
+}
+
+static PyObject *%(object)s_destroy (PyObject *self, PyObject *args) {
+
+	Processor *processor = (Processor*) PyInt_AsLong( PyTuple_GetItem(args, 0) );	
+
+	%(destroy_function)s
+
+	free(processor->data);
+	free(processor);
+}

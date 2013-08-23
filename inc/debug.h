@@ -1,4 +1,6 @@
 #ifndef DEBUG_H
+	#define DEBUG_H
+	#include <stdio.h>
 	#ifdef DEBUG_COLOR
 		#define DEBUG_RED "\033[31m"
 		#define DEBUG_GREEN "\033[32m"
@@ -23,7 +25,7 @@
 	
 	#ifdef DEBUG
 	
-		#define DEBUG_PRINT( message, ... ) fprintf( stderr, DEBUG_RED "Error at " DEBUG_GREEN "%s" DEBUG_WHITE ":" DEBUG_MAGENTA "%i" DEBUG_WHITE ":" DEBUG_YELLOW " " message DEBUG_NORMAL "\n", __FILE__, __LINE__, ## __VA_ARGS__ ); 
+		#define DEBUG_PRINT( message, ... ) fprintf( stderr, DEBUG_RED "Error at " DEBUG_GREEN "%s" DEBUG_WHITE ":" DEBUG_MAGENTA "%i" DEBUG_WHITE ":" DEBUG_YELLOW " " message DEBUG_NORMAL "\n", __FILE__, __LINE__, ## __VA_ARGS__ )
 	
 	#else
 	

@@ -38,7 +38,7 @@ simple_eval_make = u'''
 CC = gcc
 CFLAGS = -Wall -O2 -march=native -std=gnu99 -fPIC -g
 LDFLAGS =  -lpython2.7 -lm -shared
-INCLUDES = -I/usr/include/python2.7 -I../inc
+INCLUDES = -I/usr/include/python2.7 -Iinc
 SOURCES = %(sources)s
 OBJECTS = $(SOURCES:.c=.o)
 EXECUTABLE = %(lib)s

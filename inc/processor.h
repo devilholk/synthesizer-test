@@ -10,7 +10,7 @@ typedef struct {
 	void *data;
 } Processor;
 
-Processor* processor_create();
+Processor* processor_create(ProcessorFunction function, void *data);
 void processor_destroy(Processor* processor);
 
 
